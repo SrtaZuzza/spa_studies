@@ -1,0 +1,232 @@
+:root {
+/* -------------------------------------------- Fonts ---- */
+--title: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+--body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+--disclaimer: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* -------------------------------------------- Colors --- */
+--blue: deepskyblue;
+--pink: hotpink;
+--green: greenyellow;
+--purple: blueviolet;
+--yellow: yellow;
+--gray: #cecece;
+/* -------------------------------------------- Spacing -- */
+--pd-small: 24px;
+--pd-medium: 32px;
+--pd-element: 48px;
+--pd-section: 64px;
+/* -------------------------------------------- Screen --- */
+/* --max-mobile: 768px;
+--max-laptop: 1024px; */
+/* -------------------------------------------- Fonts -- */
+/* -------------------------------------------- Fonts -- */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: var(--body);
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray);
+    position: fixed;
+    width: 100%;
+    height: var(--pd-section);
+}
+
+@media (max-width: 768px) {
+    #menu {
+        position: relative;
+        /* overflow-x: hidden; */
+    }
+    #menu .list-father {
+        position: absolute;
+        background: cadetblue;
+        width: 100%;
+        height: 100%;
+        left: 100%;
+        -webkit-transition: all 200ms ease-in-out;
+        -moz-transition: all 200ms ease-in-out;
+        transition: all 200ms ease-in-out;
+    }
+    #menu .list {
+        top: 64px;
+        /* left: 100%; */
+        position: absolute;
+        background: var(--blue);
+        width: 100%;
+        height: calc(100vh - 64px);
+        padding: 32px;
+        z-index: 1;
+
+    }
+    #menu:target #list{
+        left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #menu .list-father li {
+        display: inline-block;
+    }
+}
+
+.menu-toggle {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.menu-toggle-front, .menu-toggle-back {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+.menu-toggle-front {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    opacity: 1;
+    -webkit-transition: opacity 200ms ease-in-out;
+    -moz-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+}
+
+.menu-toggle-back {
+    opacity: 0;
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+.menu-toggle-front:target {
+    opacity: 0;
+}
+
+.menu-toggle-front:target ~ .menu-toggle-back {
+    opacity: 1;
+}
+
+/* .menu-toggle-back:target {
+    grid-row-start: 1;
+    grid-column-start: 1;
+} */
+
+.static {
+    position: fixed;
+    top: var(--pd-section);
+    bottom: var(--pd-element);
+    width: 100%;
+    padding: var(--pd-medium);
+}
+
+.modal{
+    position: fixed;
+    top: var(--pd-section);
+    bottom: var(--pd-element);
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(2px) saturate(150%);
+    padding: var(--pd-medium);
+    opacity: 0;
+    -webkit-transition: opacity 200ms ease-in-out;
+    -moz-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+    pointer-events: none;
+}
+
+.modal:target{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal>div{
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    position: relative;
+    padding: var(--pd-medium);
+    border-radius: var(--pd-small);
+}
+
+/* .modal:target>div{
+    background: aliceblue;
+    margin: 8% auto;
+} */
+
+#section1, #section2, #section3, #section4, #section5 {
+    width: 100%;
+    height: 100%;
+}
+
+#section1 {
+    background: var(--blue);
+}
+
+#section2 {
+    background: var(--pink);
+}
+
+#section3 {
+    background: var(--green);
+}
+
+#section4 {
+    background: var(--purple);
+}
+
+#section5 {
+    background: var(--yellow);
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: var(--pd-element);
+}
+
+#footer .hidden-content {
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    height: 0;
+}
+
+#footer:hover .hidden-content {
+    height: 200px;
+}
+
+#footer #footer-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--pd-element);
+}
+
+#footer #icon {
+    transform: rotate(0);
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+}
+
+#footer:hover #icon {
+    transform: rotate(180deg);
+}
